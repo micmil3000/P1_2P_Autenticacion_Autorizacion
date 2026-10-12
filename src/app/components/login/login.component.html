@@ -1,0 +1,75 @@
+<section class="login">
+    <header class="login__header">
+        <div class="login__icon">
+            <img src="/assets/user.svg" alt="Icono de usuario" />
+        </div>
+
+        <h2 class="login__title">¡Hola de nuevo!</h2>
+        <p class="login__subtitle">Ingresa tus datos para continuar</p>
+    </header>
+
+    <div class="login__content">
+        <form class="login__form" [formGroup]="form" (ngSubmit)="login()" novalidate>
+            <div class="login__form-group">
+                <label for="email" class="login__label">Correo electrónico</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="login__input"
+                    placeholder="ejemplo@gmail.com"
+                    formControlName="email"
+                    required
+                />
+            </div>
+
+            <div class="login__form-group">
+                <label for="password" class="login__label">Contraseña</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="login__input"
+                    placeholder="••••••••"
+                    formControlName="password"
+                    required
+                />
+            </div>
+
+            @if(form.controls.email.touched && form.controls.email.hasError('required')) {
+                <p class="login__error" role="alert">
+                    Ingresa tu correo electrónico.
+                </p>
+            }
+
+            @if(form.controls.email.touched && form.controls.email.hasError('email')) {
+                <p class="login__error" role="alert">
+                    Ingresa un correo electrónico válido.
+                </p>
+            }
+
+            @if(form.controls.password.touched && form.controls.password.hasError('required')) {
+                <p class="login__error" role="alert">
+                    Ingresa tu contraseña.
+                </p>
+            }
+
+            @if(errorMessage()) {
+                <p class="login__error" role="alert">
+                    {{ errorMessage() }}
+                </p>
+            }
+
+            <button type="submit" class="login__button">
+                Iniciar sesión
+            </button>
+        </form>
+
+        <!-- Link para cuando se implemente el registro de un usuario -->
+<!-- 
+        <p class="login__question">
+            ¿No tienes una cuenta?
+            <a href="/register" class="login__link">Regístrate</a>
+        </p> -->
+    </div>
+</section>

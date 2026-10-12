@@ -1,0 +1,20 @@
+<section class="home">
+    <div class="home__header">
+        @if(errorMessage()) {
+            <p class="home__error">{{ errorMessage() }}</p>
+        } @else if(name()) {
+            <h1 class="home__title">Bienvenido(a) {{ name() }}</h1>
+            <p class="home__role">{{ role() }}</p>
+        } @else {
+            <p class="home__role">Cargando información...</p>
+        }
+    </div>
+
+    <button
+        class="home__button"
+        type="button"
+        (click)="logout()"
+    >
+        Cerrar sesión
+    </button>
+</section>

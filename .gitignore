@@ -42,3 +42,11 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Dependencias de Node.js
+node_modules/
